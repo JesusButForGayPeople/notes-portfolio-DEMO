@@ -1,36 +1,35 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const pdfContainer = document.getElementById("pdf-container");
 
-  // Fetch the list of PDFs (from server or static JSON)
-  const response = await fetch("pdfs.json");
-  const pdfs = await response.json();
+  try {
+    const response = await fetch("pdfs.json");
+    if (!response.ok) throw new Error("Failed to load pdfs.json");
 
-  pdfs.forEach((pdf) => {
-    const pdfItem = document.createElement("div");
-    pdfItem.classList.add("pdf-item");
+    const pdfs = await response.json();
+    pdfs.forEach((pdf) => {
+      const pdfItem = document.createElement("div");
+      pdfItem.classList.add("pdf-item");
 
-    // Create a link for the thumbnail
-    const thumbLink = document.createElement("a");
-    thumbLink.href = `pdfs/${pdf.file}`;
-    thumbLink.target = "_blank"; // Open in a new tab
+      const thumbLink = document.createElement("a");
+      thumbLink.href = `pdfs/${encodeURIComponent(pdf.file)}`;
+      thumbLink.target = "_blank";
 
-    // Create the thumbnail image
-    const img = document.createElement("img");
-    img.src = `thumbnails/${pdf.thumbnail}`; // Thumbnail preview
-    img.alt = pdf.name;
+      const img = document.createElement("img");
+      img.src = `thumbnails/${encodeURIComponent(pdf.thumbnail)}`;
+      img.alt = pdf.name;
 
-    // Append the thumbnail inside the link
-    thumbLink.appendChild(img);
+      thumbLink.appendChild(img);
 
-    // Create a link for the title
-    const titleLink = document.createElement("a");
-    titleLink.href = `pdfs/${pdf.file}`;
-    titleLink.textContent = pdf.name;
-    titleLink.target = "_blank"; // Open in a new tab
+      const titleLink = document.createElement("a");
+      titleLink.href = `pdfs/${encodeURIComponent(pdf.file)}`;
+      titleLink.textContent = pdf.name;
+      titleLink.target = "_blank";
 
-    // Append everything to the PDF item container
-    pdfItem.appendChild(thumbLink); // Clickable thumbnail
-    pdfItem.appendChild(titleLink); // Clickable title
-    pdfContainer.appendChild(pdfItem);
-  });
+      pdfItem.appendChild(thumbLink);
+      pdfItem.appendChild(titleLink);
+      pdfContainer.appendChild(pdfItem);
+    });
+  } catch (error) {
+    console.error("Error loading PDFs:", error);
+  }
 });
