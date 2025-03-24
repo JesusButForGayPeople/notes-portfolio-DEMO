@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Linear Algebra and Differential Equations",
+        "file": "Linear Algebra and Differential Equations.pdf",
+        "thumbnail": "Linear_Algebra_and_Differential_Equations.png"
+    },
+    {
+        "name": "Linear Algebra II",
+        "file": "Linear Algebra II.pdf",
+        "thumbnail": "Linear_Algebra_II.png"
+    },
+    {
+        "name": "Bayesian Inference - Single Parameter Models",
+        "file": "Bayesian Inference - Single Parameter Models.pdf",
+        "thumbnail": "Bayesian_Inference_-_Single_Parameter_Models.png"
+    },
+    {
+        "name": "Preliminaries to Kant's Critique",
+        "file": "Preliminaries to Kant's Critique.pdf",
+        "thumbnail": "Preliminaries_to_Kant's_Critique.png"
+    },
+    {
+        "name": "Introduction to Bayesian Inference",
+        "file": "Introduction to Bayesian Inference.pdf",
+        "thumbnail": "Introduction_to_Bayesian_Inference.png"
+    },
+    {
+        "name": "Introduction to Probability",
+        "file": "Introduction to Probability.pdf",
+        "thumbnail": "Introduction_to_Probability.png"
+    }
+]

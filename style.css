@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "TTNormsProSerifNormal";
+    src: url("fonts/TTNormsProSerif-Normal.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: "TTNormsProSerifNormal", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #856655;
+    text-align: center;
+}
+
+header {
+    background: #210f05;
+    color: #ded4a2;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#pdf-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.pdf-item {
+    text-align: center;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+    position: relative; /* Ensure child elements move relative to this */
+}
+
+.pdf-item:hover {
+    transform: scale(1.05); /* Slightly enlarges everything */
+}
+
+.pdf-item img {
+    width: 300px;
+    height: auto;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Title styles */
+.pdf-item a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    max-width: 300px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    transition: transform 0.2s ease-in-out;
+    position: relative; /* Allows it to move independently */
+}
+
+/* Move ONLY the title downward when hovering */
+.pdf-item:hover img {
+    transform: scale(1.05); /* Scale thumbnail but keep its position */
+}
+
+.pdf-item:hover a {
+    margin-top: 20px; /* Adjust this for an even bigger gap */
+}
