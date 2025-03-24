@@ -4,6 +4,26 @@
     font-weight: normal;
     font-style: normal;
 }
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Adjust as needed */
+}
+
+.landing-container button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #210f05;
+    color: #ded4a2;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.landing-container button:hover {
+    background-color: #856655;
+}
 body {
     font-family: "TTNormsProSerifNormal", serif;
     margin: 0;
