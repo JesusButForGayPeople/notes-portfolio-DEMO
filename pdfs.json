@@ -1,13 +1,23 @@
 [
     {
+        "name": "Bayesian Inference - Single Parameter Models",
+        "file": "Bayesian Inference - Single Parameter Models.pdf",
+        "thumbnail": "Bayesian_Inference_-_Single_Parameter_Models.png"
+    },
+    {
+        "name": "Bayesian Inference - Multiple Parameter Models",
+        "file": "Bayesian Inference - Multiple Parameter Models.pdf",
+        "thumbnail": "Bayesian_Inference_-_Multiple_Parameter_Models.png"
+    },
+    {
         "name": "Linear Algebra II",
         "file": "Linear Algebra II.pdf",
         "thumbnail": "Linear_Algebra_II.png"
     },
     {
-        "name": "Introduction to Bayesian Inference",
-        "file": "Introduction to Bayesian Inference.pdf",
-        "thumbnail": "Introduction_to_Bayesian_Inference.png"
+        "name": "Preliminaries to Kant's Critique",
+        "file": "Preliminaries to Kant's Critique.pdf",
+        "thumbnail": "Preliminaries_to_Kant's_Critique.png"
     },
     {
         "name": "Introduction to Probability",
@@ -20,18 +30,8 @@
         "thumbnail": "Linear_Algebra_and_Differential_Equations.png"
     },
     {
-        "name": "Preliminaries to Kant's Critique",
-        "file": "Preliminaries to Kant's Critique.pdf",
-        "thumbnail": "Preliminaries_to_Kant's_Critique.png"
-    },
-    {
-        "name": "Bayesian Inference - Single Parameter Models",
-        "file": "Bayesian Inference - Single Parameter Models.pdf",
-        "thumbnail": "Bayesian_Inference_-_Single_Parameter_Models.png"
-    },
-    {
-        "name": "Bayesian Inference - Multiple Parameter Models",
-        "file": "Bayesian Inference - Multiple Parameter Models.pdf",
-        "thumbnail": "Bayesian_Inference_-_Multiple_Parameter_Models.png"
+        "name": "Introduction to Bayesian Inference",
+        "file": "Introduction to Bayesian Inference.pdf",
+        "thumbnail": "Introduction_to_Bayesian_Inference.png"
     }
 ]

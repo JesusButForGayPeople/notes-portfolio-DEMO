@@ -12,7 +12,8 @@ parser = argparse.ArgumentParser(description="Generate and manage PDF thumbnails
 parser.add_argument("--regen", action="store_true", help="Delete existing thumbnails and regenerate them.")
 args = parser.parse_args()
 
-# Ensure thumbnails directory exists
+# Ensure directories exist
+os.makedirs(PDF_FOLDER, exist_ok=True)
 os.makedirs(THUMBNAIL_FOLDER, exist_ok=True)
 
 # If --regen flag is set, delete all existing thumbnails
@@ -32,24 +33,29 @@ if os.path.exists(JSON_FILE):
 else:
     existing_pdfs = []
 
-# Convert existing JSON data into a dictionary for quick lookup
-existing_pdf_data = {pdf["file"]: pdf for pdf in existing_pdfs}
+# Create lookup dictionaries for existing data
+existing_pdf_files = {pdf["file"] for pdf in existing_pdfs}
+existing_thumbnail_files = {pdf["thumbnail"] for pdf in existing_pdfs}
 
-# Get list of actual PDFs in the folder
-pdf_files = set(f for f in os.listdir(PDF_FOLDER) if f.lower().endswith(".pdf"))
+# Get current PDF files in the folder
+current_pdf_files = {f for f in os.listdir(PDF_FOLDER) if f.lower().endswith(".pdf")}
 
-# Reset the existing thumbnails list after deletion (if --regen was used)
-existing_thumbnails = set(os.listdir(THUMBNAIL_FOLDER)) if not args.regen else set()
-
+# Process all current PDF files
 updated_pdfs = []
 
-for pdf_file in pdf_files:
+for pdf_file in current_pdf_files:
     pdf_path = os.path.join(PDF_FOLDER, pdf_file)
     thumbnail_name = pdf_file.replace(" ", "_").replace(".pdf", ".png")
     thumbnail_path = os.path.join(THUMBNAIL_FOLDER, thumbnail_name)
 
-    # Generate a new thumbnail if it doesn't exist or --regen was used
-    if args.regen or thumbnail_name not in existing_thumbnails:
+    # Check if we need to generate a new thumbnail
+    need_new_thumbnail = (
+        args.regen or
+        thumbnail_name not in existing_thumbnail_files or
+        not os.path.exists(thumbnail_path)
+    )
+
+    if need_new_thumbnail:
         print(f"Generating thumbnail for: {pdf_file}")
         try:
             result = subprocess.run([
@@ -58,7 +64,6 @@ for pdf_file in pdf_files:
                 "-resize", "800x800", thumbnail_path
             ], capture_output=True, text=True, check=True)
 
-            # Print any warnings from ImageMagick
             if result.stderr:
                 print(f"ImageMagick warning for {pdf_file}: {result.stderr.strip()}")
 
@@ -66,24 +71,24 @@ for pdf_file in pdf_files:
 
         except subprocess.CalledProcessError as e:
             print(f"Error generating thumbnail for {pdf_file}: {e.stderr.strip()}")
-            continue  # Skip this file and move on
+            continue
 
-    # Update JSON entry
+    # Add to the updated list
     updated_pdfs.append({
         "name": pdf_file.replace(".pdf", ""),
         "file": pdf_file,
         "thumbnail": thumbnail_name
     })
 
-# Remove outdated thumbnails (if they belong to deleted PDFs)
+# Clean up orphaned thumbnails (thumbnails without corresponding PDFs)
+current_thumbnail_files = {pdf["thumbnail"] for pdf in updated_pdfs}
 for thumbnail in os.listdir(THUMBNAIL_FOLDER):
-    expected_pdf = thumbnail.replace("_", " ").replace(".png", ".pdf")
-    if expected_pdf not in pdf_files:
+    if thumbnail not in current_thumbnail_files:
         os.remove(os.path.join(THUMBNAIL_FOLDER, thumbnail))
         print(f"Deleted orphaned thumbnail: {thumbnail}")
 
-# Save updated JSON file (only keeping valid PDFs)
+# Save updated JSON file
 with open(JSON_FILE, "w") as f:
     json.dump(updated_pdfs, f, indent=4)
 
-print("✅ Successfully updated pdfs.json, regenerated thumbnails (if needed), and cleaned up removed files!")
+print(f"✅ Successfully updated {JSON_FILE} with {len(updated_pdfs)} PDFs!")
