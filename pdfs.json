@@ -1,18 +1,28 @@
 [
     {
-        "name": "Bayesian Inference - Single Parameter Models",
-        "file": "Bayesian Inference - Single Parameter Models.pdf",
-        "thumbnail": "Bayesian_Inference_-_Single_Parameter_Models.png"
-    },
-    {
-        "name": "Bayesian Inference - Multiple Parameter Models",
-        "file": "Bayesian Inference - Multiple Parameter Models.pdf",
-        "thumbnail": "Bayesian_Inference_-_Multiple_Parameter_Models.png"
+        "name": "STAT 217 NOTECARD",
+        "file": "STAT 217 NOTECARD.pdf",
+        "thumbnail": "STAT_217_NOTECARD.png"
     },
     {
         "name": "Linear Algebra II",
         "file": "Linear Algebra II.pdf",
         "thumbnail": "Linear_Algebra_II.png"
+    },
+    {
+        "name": "Introduction to Bayesian Inference",
+        "file": "Introduction to Bayesian Inference.pdf",
+        "thumbnail": "Introduction_to_Bayesian_Inference.png"
+    },
+    {
+        "name": "Linear Algebra and Differential Equations",
+        "file": "Linear Algebra and Differential Equations.pdf",
+        "thumbnail": "Linear_Algebra_and_Differential_Equations.png"
+    },
+    {
+        "name": "Bayesian Inference - Single Parameter Models",
+        "file": "Bayesian Inference - Single Parameter Models.pdf",
+        "thumbnail": "Bayesian_Inference_-_Single_Parameter_Models.png"
     },
     {
         "name": "Preliminaries to Kant's Critique",
@@ -25,13 +35,8 @@
         "thumbnail": "Introduction_to_Probability.png"
     },
     {
-        "name": "Linear Algebra and Differential Equations",
-        "file": "Linear Algebra and Differential Equations.pdf",
-        "thumbnail": "Linear_Algebra_and_Differential_Equations.png"
-    },
-    {
-        "name": "Introduction to Bayesian Inference",
-        "file": "Introduction to Bayesian Inference.pdf",
-        "thumbnail": "Introduction_to_Bayesian_Inference.png"
+        "name": "Bayesian Inference - Multiple Parameter Models",
+        "file": "Bayesian Inference - Multiple Parameter Models.pdf",
+        "thumbnail": "Bayesian_Inference_-_Multiple_Parameter_Models.png"
     }
 ]
