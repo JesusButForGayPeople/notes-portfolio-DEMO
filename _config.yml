@@ -2,10 +2,12 @@
 markdown: kramdown
 highlighter: rouge
 
+title: "Blog"
+tagline: "Development progress and project notes"
+description: "A minimal blog to track my project development."
 author:
-  name: "Aidan"
+  name: "Aidan Wagner"
   url: "https://finitesample.space"
-  baseurl: ""
 
 github:
   repo: https://github.com/JesusButForGayPeople/finitesample.space
