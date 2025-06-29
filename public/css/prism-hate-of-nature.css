@@ -1,0 +1,292 @@
+/**
+ * Hate of Nature 2 Theme for Prism.js
+ * Based on Zed editor theme
+ * Dark green nature-inspired color scheme
+ */
+
+pre[class*="language-rust"] {
+    background-color: #182c00 !important;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+/* Also target the code element inside */
+pre[class*="language-rust"] code {
+    background-color: transparent;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #92b161; /* text */
+    background: none;
+    font-family:
+        "Fira Code", "JetBrains Mono", "Source Code Pro", Consolas, Monaco,
+        "Andale Mono", "Ubuntu Mono", monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background: #3a5412; /* element.selected */
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #3a5412; /* element.selected */
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: 0.5em 0;
+    overflow: auto;
+    border-radius: 0.3em;
+    background: #1a2d00; /* editor.background */
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: 0.1em 0.3em;
+    border-radius: 0.3em;
+    white-space: normal;
+    background: #293911; /* element.background */
+}
+
+/* Syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #57702f; /* syntax.comment.color */
+    font-style: italic;
+}
+
+.token.punctuation {
+    color: #92b161; /* text */
+}
+
+.token.namespace {
+    opacity: 1;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #fd971f; /* syntax.tag.color */
+}
+
+.token.boolean,
+.token.number {
+    color: #ae81ff; /* syntax.number.color */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #e6db74; /* syntax.string.color */
+}
+
+.token.operator {
+    color: #a6e22e;
+}
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+    color: #fd971f; /* syntax.variable.color */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+    color: #66d9ef; /* syntax.function.color */
+}
+
+.token.keyword {
+    color: #f92672; /* syntax.keyword.color */
+    font-weight: bold;
+}
+
+.token.regex,
+.token.important {
+    color: #e6db74; /* syntax.string.regex.color */
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+/* Rust-specific tokens */
+.token.lifetime {
+    color: #ae81ff; /* syntax.constant.color */
+}
+
+.token.attribute {
+    color: #a6e22e; /* syntax.attribute.color */
+}
+
+.token.macro {
+    color: #66d9ef; /* syntax.function.color */
+}
+
+.token.type-def {
+    color: #a6e22e; /* syntax.type.color */
+}
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+    background-color: #61704a; /* editor.active_line_number */
+}
+
+/* Line numbers */
+.line-numbers .line-numbers-rows {
+    border-right: 1px solid #414339; /* editor.wrap_guide */
+    background: #1a2d00; /* editor.gutter.background */
+}
+
+.line-numbers-rows > span:before {
+    color: #61704a; /* editor.line_number */
+}
+
+.line-numbers .line-numbers-rows > span:hover:before {
+    color: #92b161; /* text */
+}
+
+/* Diff highlighting */
+.token.deleted {
+    background: rgba(201, 38, 94, 0.15);
+}
+
+.token.inserted {
+    background: rgba(166, 226, 46, 0.15);
+}
+
+/* Search highlighting */
+.token.search-highlight {
+    background: #8aa513; /* search.match_background */
+    color: #1a2d00;
+}
+
+/* Error highlighting */
+.token.error {
+    color: #f92672;
+    background: rgba(249, 38, 114, 0.1);
+}
+
+.token.primitive-type {
+    color: #a6e22e;
+}
+
+.language-rust .token.class-name,
+.language-rust .token.type-def,
+.language-rust .token.primitive-type,
+.language-rust .token.type {
+    color: #a6e22e; /* syntax.type.color - bright green for types */
+}
+
+.language-rust .token.lifetime {
+    color: #ae81ff; /* syntax.constant.color */
+    font-style: italic;
+}
+
+.language-rust .token.attribute {
+    color: #a6e22e; /* syntax.attribute.color - bright green for attributes */
+}
+
+.language-rust .token.macro {
+    color: #66d9ef; /* syntax.function.color */
+}
+
+/* Namespace/module qualifiers like wgpu:: */
+.language-rust .token.namespace {
+    color: #fd971f; /* cyan for module names like wgpu */
+}
+
+/* Generic type parameters and angle brackets */
+.language-rust .token.generic,
+.language-rust .token.generic .token.punctuation {
+    color: #a6e22e; /* syntax.type.color - keep generics green */
+}
+
+/* Fix angle brackets in generic types */
+.language-rust .token.punctuation.bracket.angle,
+.language-rust .token.operator.angle-bracket {
+    color: #a6e22e; /* Make < > green when part of types */
+}
+
+/* Specific overrides for type contexts */
+.language-rust .token.type .token.operator,
+.language-rust .token.type .token.punctuation,
+.language-rust .token.class-name .token.operator,
+.language-rust .token.class-name .token.punctuation {
+    color: #a6e22e; /* Keep type-related punctuation green */
+}
+
+/* Handle nested generics like Option<Arc<Window>> */
+.language-rust .token.type + .token.operator,
+.language-rust .token.operator + .token.type,
+.language-rust .token.class-name + .token.operator,
+.language-rust .token.operator + .token.class-name {
+    color: #a6e22e;
+}
+
+/* Ensure struct/type names stay green */
+.language-rust .token.builtin {
+    color: #a6e22e; /* Green for built-in types like Option, Arc */
+}
+
+/* Scrollbar styling */
+pre[class*="language-"]::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+    background: #3a5412; /* scrollbar.track.background */
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+    background: #61704a;
+    border-radius: 4px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+    background: #8aa513;
+}

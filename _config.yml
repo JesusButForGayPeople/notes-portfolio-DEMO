@@ -2,12 +2,15 @@
 markdown: kramdown
 highlighter: rouge
 
-title: "Blog"
+title: "Mirador"
 tagline: "Development progress and project notes"
-description: "A minimal blog to track my project development."
+description: "Development Log"
 author:
   name: "Aidan Wagner"
   url: "https://finitesample.space"
 
 github:
   repo: https://github.com/JesusButForGayPeople/finitesample.space
+
+plugins:
+  - jekyll-gist

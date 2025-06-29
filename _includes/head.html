@@ -1,29 +1,169 @@
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <!-- Enable responsiveness on mobile devices-->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
 
-  <title>
-    {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
-    {% else %}
-      {{ page.title }} &middot; {{ site.title }}
-    {% endif %}
-  </title>
+    <title>
+        {% if page.title == "Home" %} {{ site.title }} &middot; {{ site.tagline
+        }} {% else %} {{ page.title }} &middot; {{ site.title }} {% endif %}
+    </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}public/css/syntax.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}public/css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+    <!-- CSS -->
+    <script>
+        // Enhanced Rust grammar for Prism.js
+        Prism.languages.rust = {
+            comment: [
+                {
+                    pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,
+                    lookbehind: true,
+                    greedy: true,
+                },
+                {
+                    pattern: /(^|[^\\:])\/\/.*/,
+                    lookbehind: true,
+                    greedy: true,
+                },
+            ],
+            string: {
+                pattern:
+                    /b?"(?:\\[\s\S]|[^\\"])*"|b?r(#*)"(?:[^"]|"(?!\1))*"\1/,
+                greedy: true,
+            },
+            attribute: {
+                pattern: /#!?\[(?:[^\[\]"]|"(?:\\[\s\S]|[^\\"])*")*\]/,
+                greedy: true,
+                alias: "attr-name",
+                inside: {
+                    string: null, // see below
+                },
+            },
+            "closure-params": {
+                pattern:
+                    /([=(,:;]|^|[^&]|\b(?:move|if|while|for|loop|match|unsafe|[A- Za-z_]\w*)\s*)\|[^|]*\|/,
+                lookbehind: true,
+                greedy: true,
+                inside: {
+                    "closure-punctuation": {
+                        pattern: /^\||\|$/,
+                        alias: "punctuation",
+                    },
+                },
+            },
+            "lifetime-annotation": {
+                pattern: /'\w+/,
+                alias: "symbol",
+            },
+            "fragment-specifier": {
+                pattern: /(\$\w+:)[a-z]+/,
+                lookbehind: true,
+                alias: "punctuation",
+            },
+            variable: /\$\w+/,
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}public/apple-touch-icon-144-precomposed.png">
-                                 <link rel="shortcut icon" href="{{ site.baseurl }}public/favicon.ico">
+            "function-definition": {
+                pattern:
+                    /((?:^|\s)(?:async\s+)?(?:unsafe\s+)?(?:extern(?:\s+(?:"[^"]*"|\w+))?\s+)?fn\s+)\w+/,
+                lookbehind: true,
+                alias: "function",
+            },
+            "type-definition": {
+                pattern: /((?:^|\s)(?:type|struct|enum|union|trait)\s+)\w+/,
+                lookbehind: true,
+                alias: "class-name",
+            },
+            "module-declaration": {
+                pattern: /((?:^|\s)mod\s+)\w+/,
+                lookbehind: true,
+                alias: "namespace",
+            },
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+            // ✅ Step 2: Then keywords (with primitives removed)
+            keyword:
+                /\b(?:_|abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|Self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/,
+
+            // Enhanced type matching including generics
+            type: {
+                pattern: /\b(?:[A-Z]\w*(?:<[^<>]*>)?)\b/,
+                inside: {
+                    generic: {
+                        pattern: /<[^<>]*>/,
+                        inside: {
+                            punctuation: /[<>]/,
+                            type: /\b[A-Z]\w*/,
+                        },
+                    },
+                },
+            },
+
+            function: /\b[a-z_]\w*(?=\s*(?:::\s*<|\())/,
+            macro: {
+                pattern: /\b\w+!/,
+                alias: "property",
+            },
+            constant: /\b[A-Z_][A-Z_\d]*\b/,
+            "class-name": /\b[A-Z]\w*\b/,
+
+            number: /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:[iu](?:8|16|32|64|size)?|f32|f64))?\b/,
+
+            boolean: /\b(?:false|true)\b/,
+            punctuation: /->|\.\.=|\.{1,3}|::|[{}[\];(),:]/,
+            operator: /[-+*\/%!^]=?|=[=>]?|&[&=]?|\|[|=]?|<<?=?|>>?=?|[@?]/,
+            // Add this to your enhanced Rust grammar
+            namespace: {
+                pattern: /\b[a-z_]\w*(?=::)/,
+                alias: "namespace",
+            },
+            "builtin-type": {
+                pattern:
+                    /\b(?:Option|Result|Vec|String|Arc|Rc|Box|HashMap|BTreeMap)\b/,
+                alias: "builtin",
+            },
+        };
+
+        // Copy string grammar to attribute
+        Prism.languages.rust.attribute.inside.string =
+            Prism.languages.rust.string;
+    </script>
+    <link
+        rel="stylesheet"
+        href="{{ '/public/css/poole.css' | relative_url }}"
+    />
+    <link
+        rel="stylesheet"
+        href="{{ '/public/css/syntax.css' | relative_url }}"
+    />
+    <link rel="stylesheet" href="{{ '/public/css/hyde.css' | relative_url }}" />
+
+    <link
+        rel="stylesheet"
+        href="{{ '/public/css/fonts.css' | relative_url }}"
+    />
+    <link
+        rel="stylesheet"
+        href="{{ '/public/css/prism-hate-of-nature.css' | relative_url }}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Icons -->
+    <link
+        rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="{{ site.baseurl }}public/apple-touch-icon-144-precomposed.png"
+    />
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+
+    <!-- RSS -->
+    <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="RSS"
+        href="/atom.xml"
+    />
 </head>
