@@ -33,7 +33,7 @@ Mirador is organized into several core modules:
 - [**app**](/app/): The main application object, responsible for initialization, event handling, rendering, and orchestrating the game state.
 - [**game**](/game/): Contains logic for player state, input handling, and core gameplay mechanics.
 - [**maze**](/maze/): Handles procedural maze generation, storage, and rendering data.
-- [**renderer**](/renderer/): Manages WGPU-based rendering pipelines, including background and animation effects.
+- [**Rendering**](/renderer/): Manages WGPU-based rendering pipelines, including background and animation effects.
 - [**ui**](/ui/): Implements egui-based overlays and user interface panels.
 - [**math**](/math/): Provides mathematical utilities and helpers for graphics and game logic.
 
