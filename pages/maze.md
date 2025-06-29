@@ -1,5 +1,5 @@
 ---
 layout: page
-title: maze
+title: Random Maze Generation
 permalink: /maze/
 ---

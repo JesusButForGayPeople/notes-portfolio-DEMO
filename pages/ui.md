@@ -1,5 +1,5 @@
 ---
 layout: page
-title: ui
+title: User Interface (egui)
 permalink: /ui/
 ---

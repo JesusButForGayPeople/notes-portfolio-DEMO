@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Mirador Rendering Pipelines
+title: Rendering Pipelines
 permalink: /renderer/
 ---
 

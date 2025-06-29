@@ -1,5 +1,5 @@
 ---
 layout: page
-title: math
+title: Math Utilities
 permalink: /math/
 ---

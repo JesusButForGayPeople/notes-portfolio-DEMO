@@ -1,5 +1,5 @@
 ---
 layout: page
-title: game
+title: Game State Management
 permalink: /game/
 ---

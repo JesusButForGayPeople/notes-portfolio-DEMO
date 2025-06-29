@@ -1,12 +1,8 @@
 ---
 layout: page
-title: app
+title: App State Management
 permalink: /app/
 ---
-
-# Mirador Application Architecture
-
-This document provides an overview of the core application structures that form the foundation of the Mirador 3D maze game.
 
 ## Overview
 
@@ -53,7 +49,7 @@ pub struct AppState {
 
 **Rendering Pipelines:**
 - **`wgpu_renderer`**: Handles all 3D graphics rendering including the maze geometry, starfield backgrounds, maze animations, and depth-tested 3D scenes. \[See [**renderer**](/renderer/) for more information.  \]
-- **`egui_renderer`**: Manages the immediate-mode GUI system for all user interface overlays, menus, and debug panels
+- **`egui_renderer`**: Manages the immediate-mode GUI system for all user interface overlays, menus, and debug panels. \[See [**User Interface (egui)**](/ui/) for more information.  \]
 
 **Application State:**
 - **`ui`**: Contains all UI component states including sliders, color pickers, configuration panels, and user preferences

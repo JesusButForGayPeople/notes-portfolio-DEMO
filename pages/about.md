@@ -30,12 +30,12 @@ Mirador is a work in progress game engine written entirely in Rust. It is design
 
 Mirador is organized into several core modules:
 
-- [**app**](/app/): The main application object, responsible for initialization, event handling, rendering, and orchestrating the game state.
-- [**game**](/game/): Contains logic for player state, input handling, and core gameplay mechanics.
-- [**maze**](/maze/): Handles procedural maze generation, storage, and rendering data.
-- [**Rendering**](/renderer/): Manages WGPU-based rendering pipelines, including background and animation effects.
-- [**ui**](/ui/): Implements egui-based overlays and user interface panels.
-- [**math**](/math/): Provides mathematical utilities and helpers for graphics and game logic.
+- [**App**](/app/): The main application object, responsible for initialization, event handling, rendering, and orchestrating the game state.
+- [**Game**](/game/): Contains logic for player state, input handling, and core gameplay mechanics.
+- [**Maze**](/maze/): Handles procedural maze generation, storage, and rendering data.
+- [**Rendering**](/renderer/): Manages all rendering pipelines.
+- [**UI**](/ui/): Implements egui-based overlays for easier development and debugging.
+- [**Math**](/math/): Provides vector and matrix utilities for graphics and game logic.
 
 The application initializes a WGPU instance and event loop, sets up rendering and UI pipelines, and manages all state transitions and user interactions through a central `App` struct.
 
