@@ -60,6 +60,9 @@ Mirador is intended for developers and enthusiasts interested in graphics progra
 2. Clone the repository and build with `cargo build`.
 3. Run the application with `cargo run`.
 
+For the in code documentation, please refer to:
+- [**Rust Doc Documentation**](https://jesusbutforgaypeople.github.io/mirador/mirador/index.html)
+
 ---
 
 ## License
