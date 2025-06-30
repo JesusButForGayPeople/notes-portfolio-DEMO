@@ -140,3 +140,5 @@ pub struct KeyState {
 - **Spatial Awareness**: Maintains collision system with configurable player radius and height
 - **Movement Validation**: Ensures player movement respects maze geometry boundaries
 - **Cell Tracking**: Updates player's current maze cell based on world position for efficient spatial queries
+
+For more information on collision detection with bounding volume hierarchies, please refer to the [Collision Detection with Bounding Volume Hierarchies](/collision/) page.
