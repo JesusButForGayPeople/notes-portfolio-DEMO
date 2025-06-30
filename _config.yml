@@ -10,7 +10,16 @@ author:
   url: "https://finitesample.space"
 
 github:
-  repo: https://github.com/JesusButForGayPeople/finitesample.space
+  repo: https://github.com/JesusButForGayPeople/mirador
 
 plugins:
   - jekyll-gist
+  - jekyll-redirect-from
+
+sidebar_pages:
+  - /about/
+  - /app/
+  - /game/
+  - /maze/
+  - /renderer/
+  - /ui/

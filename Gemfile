@@ -12,3 +12,4 @@ gem "csv"
 gem "logger"
 gem "jekyll-gist"
 gem "base64"  # required since Ruby 3.4 no longer includes it
+gem "jekyll-redirect-from"
