@@ -43,12 +43,13 @@ The application initializes a WGPU instance and event loop, sets up rendering an
 
 ## Technologies Used
 
-- **Rust** (edition 2024)
-- **WGPU**: Modern, portable graphics API for GPU rendering.
-- **egui**: Immediate-mode GUI library for Rust.
-- **winit**: Cross-platform window and event loop management.
-- **rand**: Random number generation for procedural content.
-- **chrono**: Time and date utilities.
+- [**Rust**](https://www.rust-lang.org/) : (edition 2024)
+- [**WGPU**](https://wgpu.rs): Modern, portable graphics API for GPU rendering.
+- [**egui**](https://github.com/emilk/egui): Immediate-mode GUI library for Rust.
+- [**winit**](https://github.com/rust-windowing/winit): Cross-platform window and event loop management.
+- [**rand**](https://github.com/rust-random/rand): Random number generation for procedural content.
+- [**chrono**](https://github.com/chronotope/chrono): Time and date utilities.
+- [**glyphon**](https://github.com/grovesNL/glyphon): Modern rust API for rendering text on the GPU via wgpu.
 
 ---
 
