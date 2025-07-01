@@ -4,8 +4,6 @@ title: Math Utilities
 permalink: /math/
 ---
 
-# Math Utilities
-
 This module provides essential mathematical types and operations for 3D graphics transformations, specifically designed for use with WGPU and WGSL shaders.
 
 ## 4x4 Matrix (Mat4)
