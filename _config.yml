@@ -10,7 +10,7 @@ author:
   url: "https://finitesample.space"
 
 github:
-  repo: https://github.com/JesusButForGayPeople/mirador
+  repo: https://github.com/DetectiveFierce/mirador
 
 plugins:
   - jekyll-gist
