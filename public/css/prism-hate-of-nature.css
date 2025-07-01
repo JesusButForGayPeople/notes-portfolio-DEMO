@@ -153,6 +153,12 @@ pre[class*="language-"] {
     cursor: help;
 }
 
+.language-rust .token.primitive-type,
+.language-rust .token.builtin {
+    color: #a6e22e !important; /* Green for primitive types */
+    font-weight: normal !important; /* Remove bold from keywords */
+}
+
 /* Rust-specific tokens */
 .token.lifetime {
     color: #ae81ff; /* syntax.constant.color */

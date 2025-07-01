@@ -15,8 +15,28 @@
     </title>
 
     <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ '/public/css/poole.css' | relative_url }}"
+    />
+
+    <link rel="stylesheet" href="{{ '/public/css/hyde.css' | relative_url }}" />
+
+    <link
+        rel="stylesheet"
+        href="{{ '/public/css/fonts.css' | relative_url }}"
+    />
+    <link
+        rel="stylesheet"
+        href="{{ '/public/css/prism-hate-of-nature.css' | relative_url }}"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
     <script>
-        // Enhanced Rust grammar for Prism.js
+        // Enhanced Rust grammar for Prism.js - Fixed version
         Prism.languages.rust = {
             comment: [
                 {
@@ -45,7 +65,7 @@
             },
             "closure-params": {
                 pattern:
-                    /([=(,:;]|^|[^&]|\b(?:move|if|while|for|loop|match|unsafe|[A- Za-z_]\w*)\s*)\|[^|]*\|/,
+                    /([=(,:;]|^|[^&]|\b(?:move|if|while|for|loop|match|unsafe|[A-Za-z_]\w*)\s*)\|[^|]*\|/,
                 lookbehind: true,
                 greedy: true,
                 inside: {
@@ -66,6 +86,14 @@
             },
             variable: /\$\w+/,
 
+            // ✅ CRITICAL: Put primitive types VERY EARLY to prevent any other matches
+            "primitive-type": {
+                pattern:
+                    /\b(?:bool|char|str|[iu](?:8|16|32|64|size)|f(?:32|64))\b/,
+                alias: "builtin",
+                greedy: true,
+            },
+
             "function-definition": {
                 pattern:
                     /((?:^|\s)(?:async\s+)?(?:unsafe\s+)?(?:extern(?:\s+(?:"[^"]*"|\w+))?\s+)?fn\s+)\w+/,
@@ -83,9 +111,20 @@
                 alias: "namespace",
             },
 
-            // ✅ Step 2: Then keywords (with primitives removed)
+            // ✅ FIXED: Move number before keyword to prevent conflicts
+            number: /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:[iu](?:8|16|32|64|size)?|f32|f64))?\b/,
+
+            // ✅ CRITICAL: Put primitive types BEFORE keywords to prevent keyword matching
+            "primitive-type": {
+                pattern:
+                    /\b(?:bool|char|str|[iu](?:8|16|32|64|size)|f(?:32|64))\b/,
+                alias: "builtin",
+                greedy: true,
+            },
+
+            // Keywords (explicitly excluding primitive types with negative lookahead)
             keyword:
-                /\b(?:_|abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|Self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/,
+                /\b(?!(?:bool|char|str|[iu](?:8|16|32|64|size)|f(?:32|64))\b)(?:_|abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|Self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/,
 
             // Enhanced type matching including generics
             type: {
@@ -109,12 +148,10 @@
             constant: /\b[A-Z_][A-Z_\d]*\b/,
             "class-name": /\b[A-Z]\w*\b/,
 
-            number: /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:[iu](?:8|16|32|64|size)?|f32|f64))?\b/,
-
             boolean: /\b(?:false|true)\b/,
             punctuation: /->|\.\.=|\.{1,3}|::|[{}[\];(),:]/,
             operator: /[-+*\/%!^]=?|=[=>]?|&[&=]?|\|[|=]?|<<?=?|>>?=?|[@?]/,
-            // Add this to your enhanced Rust grammar
+
             namespace: {
                 pattern: /\b[a-z_]\w*(?=::)/,
                 alias: "namespace",
@@ -130,27 +167,6 @@
         Prism.languages.rust.attribute.inside.string =
             Prism.languages.rust.string;
     </script>
-    <link
-        rel="stylesheet"
-        href="{{ '/public/css/poole.css' | relative_url }}"
-    />
-    <link
-        rel="stylesheet"
-        href="{{ '/public/css/syntax.css' | relative_url }}"
-    />
-    <link rel="stylesheet" href="{{ '/public/css/hyde.css' | relative_url }}" />
-
-    <link
-        rel="stylesheet"
-        href="{{ '/public/css/fonts.css' | relative_url }}"
-    />
-    <link
-        rel="stylesheet"
-        href="{{ '/public/css/prism-hate-of-nature.css' | relative_url }}"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
     <!-- Icons -->
     <link
         rel="apple-touch-icon-precomposed"
