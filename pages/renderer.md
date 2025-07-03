@@ -10,7 +10,11 @@ All rendering in Mirador is orchestrated by the `WgpuRenderer` struct, which enc
 
 ## Core Structure
 
-<embed src="{{ site.baseurl }}/assets/Renderers-Diagram.pdf" type="application/pdf" width="100%" height="1250px" />
+<object data="{{ site.baseurl }}/assets/Renderers-Diagram.svg" type="image/svg+xml" style="width: 100%; height: auto;">
+  Your browser does not support SVG
+</object>
+
+
 
 ## Rendering Flow
 

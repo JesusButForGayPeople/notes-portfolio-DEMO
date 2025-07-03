@@ -8,18 +8,30 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="author" content="{{ site.author.name }}">
-    <meta name="robots" content="index, follow">
-    
+    <meta
+        name="description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta name="author" content="{{ site.author.name }}" />
+    <meta name="robots" content="index, follow" />
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-    <meta property="og:url" content="{{ page.url | absolute_url }}">
-    <meta property="og:site_name" content="{{ site.title }}">
+    <meta
+        property="og:title"
+        content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"
+    />
+    <meta
+        property="og:description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <meta
+        property="og:type"
+        content="{% if page.layout == 'post' %}article{% else %}website{% endif %}"
+    />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:site_name" content="{{ site.title }}" />
 
     <title>
         {% if page.title == "Home" %} {{ site.title }} &middot; {{ site.tagline
@@ -194,4 +206,27 @@
         title="RSS"
         href="/atom.xml"
     />
+
+    <!-- KaTeX CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css"
+    />
+
+    <!-- KaTeX JS (auto-render extension included) -->
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js"
+    ></script>
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });"
+    ></script>
 </head>

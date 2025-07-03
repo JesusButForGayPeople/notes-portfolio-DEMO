@@ -133,15 +133,16 @@ a.sidebar-nav-item:focus {
 
 @media (min-width: 48em) {
     .content {
-        max-width: 38rem;
-        margin-left: 20rem;
+        max-width: 50rem; /* increased from 38rem */
+        margin-left: 20rem; /* same sidebar width */
         margin-right: 2rem;
     }
 }
 
 @media (min-width: 64em) {
     .content {
-        margin-left: 22rem;
+        max-width: 60rem; /* increased from 38rem */
+        margin-left: 22rem; /* same sidebar width */
         margin-right: 4rem;
     }
 }
@@ -168,6 +169,10 @@ a.sidebar-nav-item:focus {
         margin-left: 4rem;
         margin-right: 22rem;
     }
+}
+
+.centered-video {
+    text-align: center;
 }
 
 /*

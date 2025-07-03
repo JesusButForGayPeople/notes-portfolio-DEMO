@@ -34,7 +34,7 @@ pub struct GameState {
 ```
 
 #### Field Explanations:
-- **player**: The player character containing position, orientation, and movement parameters
+- **player**: The player character containing position, orientation, and movement parameters.
 - **last_frame_time**: Timestamp of the previous frame for delta time calculation
 - **delta_time**: Time elapsed since last frame in seconds, used for frame-rate independent movement
 - **frame_count**: Total number of rendered frames since game start
@@ -50,7 +50,7 @@ pub struct GameState {
 
 ### Player - Character State and Movement
 
-The `Player` struct encapsulates all aspects of the player character including spatial positioning, camera orientation, and movement mechanics for the first-person perspective.
+The `Player` struct encapsulates all aspects of the player character including spatial positioning, camera orientation, and movement mechanics for the first-person perspective. For more information see [Player](/player/)
 
 ```rust
 #[derive(Debug, Default, Clone)]

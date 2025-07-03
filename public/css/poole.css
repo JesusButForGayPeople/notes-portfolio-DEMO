@@ -120,6 +120,11 @@ strong {
     color: #8bb548;
 }
 
+.highlight-green {
+    font-weight: bold;
+    color: #a6e22e;
+}
+
 /* Lists */
 ul,
 ol,

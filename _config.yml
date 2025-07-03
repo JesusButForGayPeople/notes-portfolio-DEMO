@@ -1,6 +1,10 @@
 # Dependencies
-markdown: kramdown
-highlighter: rouge
+highlighter: none
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable: true
 
 title: "Mirador"
 tagline: "Development progress and project notes"
