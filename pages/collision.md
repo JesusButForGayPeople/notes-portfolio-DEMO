@@ -355,55 +355,6 @@ impl CollisionSystem {
 
 The collision resolution uses vector projection to enable realistic wall sliding.
 
-```rust
-impl CollisionSystem {
-    fn resolve_wall_collision(
-        &self,
-        current_pos: [f32; 3],
-        desired_pos: [f32; 3],
-        movement: [f32; 3],
-        wall_face: &WallFace,
-    ) -> [f32; 3] {
-        let normal = wall_face.normal;
-
-        let movement_dir = [
-            desired_pos[0] - current_pos[0],
-            desired_pos[1] - current_pos[1],
-            desired_pos[2] - current_pos[2],
-        ];
-
-        let approach_dot =
-            movement_dir[0] * normal[0] + movement_dir[1] * normal[1] + movement_dir[2] * normal[2];
-
-        let effective_normal = if approach_dot < 0.0 {
-            normal
-        } else {
-            [-normal[0], -normal[1], -normal[2]]
-        };
-
-        let movement_dot = movement[0] * effective_normal[0]
-            + movement[1] * effective_normal[1]
-            + movement[2] * effective_normal[2];
-
-        if movement_dot < 0.0 {
-            let slide_movement = [
-                movement[0] - movement_dot * effective_normal[0],
-                movement[1] - movement_dot * effective_normal[1],
-                movement[2] - movement_dot * effective_normal[2],
-            ];
-
-            return [
-                current_pos[0] + slide_movement[0],
-                current_pos[1] + slide_movement[1],
-                current_pos[2] + slide_movement[2],
-            ];
-        }
-
-        desired_pos
-    }
-}
-```
-
 **Wall Sliding Algorithm:**
 1. Calculate movement direction and wall normal
 2. Determine effective normal (opposing player movement)
