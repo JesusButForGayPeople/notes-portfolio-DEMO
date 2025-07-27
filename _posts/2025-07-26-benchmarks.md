@@ -3,7 +3,7 @@ layout: post
 title: Benchmarking Library Overview
 ---
 
-When developing a game like Mirador, it's important to understand where the program is spending its time. The benchmarking library provides a simple way to measure performance of different code sections and track frame rates. This isn't a sophisticated profiling system - it's just a collection of utilities to help identify slow parts of the code.
+Understanding performance characteristics is crucial when developing a game like Mirador. The benchmarking library provides a simple way to measure performance of different code sections and track frame rates. This isn't a sophisticated profiling system - it's just a collection of utilities to help identify slow parts of the code.
 
 ## What It Does
 
