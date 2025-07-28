@@ -287,17 +287,10 @@ The relationship between game state and rendering state must be carefully manage
 ### 5. Debugging Tools Are Essential
 Comprehensive logging and platform-specific debugging tools are invaluable for diagnosing cross-platform issues.
 
-## The Final Result
-
-After a little bit more than a month of development and countless iterations, Mirador now runs reliably on both Linux AND Windows with:
-
-- ✅ **Self-contained binary** with all assets embedded
-- ✅ **Proper font rendering** without Wingdings characters
-- ✅ **Reliable upgrade menu** that works consistently on Windows
-- ✅ **High DPI support** with proper text scaling
-- ✅ **Maximized window** behavior on Windows
-- ✅ **Cross-platform compatibility** maintained with Linux
+## Cross Platform at Last!
 
 The journey from a Linux-only game to a (hopefully) robust cross-platform Windows binary involved solving numerous technical challenges, but the result is a much more user-friendly application. The lessons learned about cross-platform development will continue to inform the future of the project and help avoid similar issues in the future. Although, I am afraid that cross platform compatability issues will continue to haunt me as I continue to expand the engine.
+
+For those wondering about a MacOS release—don’t hold your breath. I don’t currently own a Mac, and my experience with the MacOS ecosystem is limited at best. Compared to Windows and Linux, it’s foreign territory. I grew up using Windows for pretty much the first two decades of my life using Windows and it was a headache for me to port the game to it; I can only imagine how much work it would be to port Mirador to an OS I know virtually nothing about. Mac users will unfortunately have to sit this one out for now.
 
 The experience demonstrates that cross-platform development requires not just technical skill, but also patience, systematic debugging, a deep understanding of platform-specific behaviors, and certainly a degree of self hatred. What started as a simple compilation request evolved into a comprehensive exploration of just how much I do not like Windows.
