@@ -15,7 +15,7 @@ With the Windows toolchain set up, producing a Windows binary was straightforwar
 
 ## Asset Embedding Revolution
 
-The first major technical challenge was embedding all game assets into the binary. The original implementation loaded assets from the filesystem using relative paths, which works well on Linux but can be problematic on Windows due to different path handling and distribution requirements.
+The first major technical challenge was embedding all game assets into the binary. The original implementation loaded assets from the filesystem using relative paths, which works well for development on Linux but can be problematic for distribution, as if the assets are not where the binary expects them, then they will fail to load making the game unplayable. We could solve this by ensuring that the files are in the right location in the release, but this is fragile: if something happens to the asset folders the binary can very easily become unplayable. The other option is to pack all of the game assets into the binary itself. This approach allows us to create a binary that portably contains everything Mirador needs to run in a single executable file. The draw back of this approach is that including a large number of game assets can rapidly balloon the size of the executable. However, the dozen or so assets that Mirador requires should not change the size of the binary dramatically.
 
 ### The `include_bytes!()` Solution
 
