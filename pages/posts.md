@@ -8,7 +8,7 @@ permalink: /posts/
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
-      <span>{{ post.date | date: "%m-%d-%Y" }}</span>
+      <span>{{ post.date | date: "%A, %B %d, %Y" }}</span>
     </li>
   {% endfor %}
 </ul>

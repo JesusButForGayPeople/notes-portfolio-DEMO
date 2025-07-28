@@ -1,34 +1,64 @@
 <!doctype html>
 <html lang="en-us">
-    {% include head.html %}
+{% include head.html %}
 
-    <body>
-        {% include sidebar.html %}
+<body>
+    {% include sidebar.html %}
 
-        <div class="content container">{{ content }}</div>
+    <div class="content container">
+        {{ content }}
+    </div>
 
-        <!-- Inline code language detection -->
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                document.querySelectorAll("code").forEach((code) => {
-                    const isInline = !code.closest("pre");
-                    const hasLang = [...code.classList].some((cls) =>
-                        cls.startsWith("language-"),
-                    );
+    <!-- Inline code language detection -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("code").forEach((code) => {
+                const isInline = !code.closest("pre");
+                const hasLang = [...code.classList].some((cls) =>
+                    cls.startsWith("language-"),
+                );
 
-                    if (isInline && !hasLang) {
-                        code.classList.add("language-rust");
-                    }
-                });
-
-                if (typeof Prism !== "undefined") {
-                    Prism.highlightAll();
+                if (isInline && !hasLang) {
+                    code.classList.add("language-rust");
                 }
             });
-        </script>
-        <script>
-            Prism.plugins.autoloader.languages_path =
-                "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/";
-        </script>
-    </body>
+
+            if (typeof Prism !== "undefined") {
+                Prism.highlightAll();
+            }
+        });
+    </script>
+    <script>
+        Prism.plugins.autoloader.languages_path =
+            "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/";
+    </script>
+
+    <!-- Search functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+
+            // Handle search button click
+            searchButton.addEventListener('click', function () {
+                const query = searchInput.value.trim();
+                if (query.length >= 2) {
+                    window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+                }
+            });
+
+            // Handle Enter key in search input
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const query = this.value.trim();
+                    if (query.length >= 2) {
+                        window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
 </html>

@@ -8,25 +8,26 @@
         </div>
 
         <nav class="sidebar-nav">
+            <!-- Search bar -->
+            <div class="search-container">
+                <div class="search-input-group">
+                    <input type="text" id="search-input" placeholder="Search..." class="search-input">
+                    <button type="button" id="search-button" class="search-button" title="Search">
+                        🔍
+                    </button>
+                </div>
+            </div>
+            <div style="margin-bottom: 1em"></div>
             <!-- Posts link at the top -->
-            <a
-                class="sidebar-nav-item{% if page.url == '/posts/' %} active{% endif %}"
-                href="/posts/"
-                >Blog Posts</a
-            >
+            <a class="sidebar-nav-item{% if page.url == '/posts/' %} active{% endif %}" href="/posts/">Blog Posts</a>
             <div style="margin-bottom: 1em"></div>
             {% assign pages_list = site.pages %} {% for node in pages_list %} {%
             if node.title and node.layout == "page" and node.url != '/posts/' %}
-            <a
-                class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}"
-                href="{{ node.url }}"
-                >{{ node.title }}</a
-            >
+            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{
+                node.title }}</a>
             {% endif %} {% endfor %}
             <div style="margin-bottom: 1em"></div>
-            <a class="sidebar-nav-item" href="{{ site.github.repo }}"
-                >GitHub project</a
-            >
+            <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
         </nav>
     </div>
 </div>
