@@ -13,6 +13,10 @@ permalink: /search/
         <div id="no-results" style="display: none;">
             <p>No results found. Try different keywords.</p>
         </div>
+        <div id="search-debug" style="display: none; margin-top: 2rem; padding: 1rem; background: rgba(255,0,0,0.1); border: 1px solid #ff0000;">
+            <h4>Debug Information:</h4>
+            <div id="debug-content"></div>
+        </div>
     </div>
 </div>
 
@@ -21,7 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultsContainer = document.getElementById('search-results-list');
     const loadingDiv = document.getElementById('search-loading');
     const noResultsDiv = document.getElementById('no-results');
+    const debugDiv = document.getElementById('search-debug');
+    const debugContent = document.getElementById('debug-content');
     const pageTitle = document.querySelector('.page-title');
+    
+    // Show debug info in development
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        debugDiv.style.display = 'block';
+    }
     
     // Get search query from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -49,13 +60,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update the main content area title
         pageTitle.textContent = `Search Results for "${query}"`;
         
+        // Debug info
+        debugContent.innerHTML = `Attempting to fetch search.json from: ${window.location.origin}/search.json`;
+        
         // Load search index and perform client-side search
         fetch('/search.json')
-            .then(response => response.json())
+            .then(response => {
+                debugContent.innerHTML += `<br>Response status: ${response.status}`;
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
             .then(searchIndex => {
+                debugContent.innerHTML += `<br>Search index loaded with ${searchIndex.length} items`;
                 loadingDiv.style.display = 'none';
                 
                 const results = searchInIndex(searchIndex, query);
+                debugContent.innerHTML += `<br>Found ${results.length} results for query: "${query}"`;
                 
                 if (results.length > 0) {
                     displayResults(results, query);
@@ -65,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Search error:', error);
+                debugContent.innerHTML += `<br>Error: ${error.message}`;
                 loadingDiv.style.display = 'none';
                 noResultsDiv.style.display = 'block';
             });
@@ -266,5 +289,11 @@ mark {
     text-align: center;
     color: #8a9a5a;
     padding: 2rem;
+}
+
+#search-debug {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #ff0000;
 }
 </style> 
