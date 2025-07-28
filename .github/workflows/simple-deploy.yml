@@ -1,15 +1,11 @@
-name: Update Search Index
+name: Simple Deploy
 
 on:
   push:
     branches: [ main, blog ]
-    paths:
-      - '_posts/**'
-      - 'pages/**'
-      - '_config.yml'
 
 jobs:
-  update-search:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,12 +16,9 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-          bundler: '2.4.22'
       
       - name: Install dependencies
-        run: |
-          gem install bundler -v 2.4.22
-          bundle install
+        run: bundle install
       
       - name: Build site
         run: bundle exec jekyll build
@@ -33,7 +26,7 @@ jobs:
       - name: Copy search.json to root
         run: cp _site/search.json .
       
-      - name: Commit and push if changed
+      - name: Commit and push search.json
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
