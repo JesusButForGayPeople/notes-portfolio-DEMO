@@ -4,32 +4,19 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
     <!-- Enable responsiveness on mobile devices-->
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
     <!-- SEO Meta Tags -->
-    <meta
-        name="description"
-        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
-    />
+    <meta name="description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
     <meta name="author" content="{{ site.author.name }}" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph Meta Tags -->
-    <meta
-        property="og:title"
-        content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"
-    />
-    <meta
-        property="og:description"
-        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
-    />
-    <meta
-        property="og:type"
-        content="{% if page.layout == 'post' %}article{% else %}website{% endif %}"
-    />
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta property="og:description"
+        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
     <meta property="og:url" content="{{ page.url | absolute_url }}" />
     <meta property="og:site_name" content="{{ site.title }}" />
 
@@ -40,24 +27,17 @@
 
     <!-- CSS -->
 
-    <link
-        rel="stylesheet"
-        href="{{ '/public/css/poole.css' | relative_url }}"
-    />
 
-    <link rel="stylesheet" href="{{ '/public/css/hyde.css' | relative_url }}" />
 
-    <link
-        rel="stylesheet"
-        href="{{ '/public/css/fonts.css' | relative_url }}"
-    />
-    <link
-        rel="stylesheet"
-        href="{{ '/public/css/prism-hate-of-nature.css' | relative_url }}"
-    />
+    <link rel="stylesheet" href="{{ '/public/css/sidebar.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/public/css/page-theme.css' | relative_url }}" />
+
+    <link rel="stylesheet" href="{{ '/public/css/fonts.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/public/css/prism-hate-of-nature.css' | relative_url }}" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
     <script>
         // Enhanced Rust grammar for Prism.js - Fixed version
@@ -192,41 +172,23 @@
             Prism.languages.rust.string;
     </script>
     <!-- Icons -->
-    <link
-        rel="apple-touch-icon-precomposed"
-        sizes="144x144"
-        href="{{ '/apple-touch-icon-144-precomposed.png' | relative_url }}"
-    />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="{{ '/apple-touch-icon-144-precomposed.png' | relative_url }}" />
     <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}" />
 
     <!-- RSS -->
-    <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="RSS"
-        href="/atom.xml"
-    />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml" />
 
     <!-- KaTeX CSS -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css" />
 
     <!-- KaTeX JS (auto-render extension included) -->
-    <script
-        defer
-        src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js"
-    ></script>
-    <script
-        defer
-        src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js"
-        onload="renderMathInElement(document.body, {
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
           delimiters: [
               {left: '$$', right: '$$', display: true},
               {left: '$', right: '$', display: false}
           ],
           throwOnError: false
-        });"
-    ></script>
+        });"></script>
 </head>

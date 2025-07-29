@@ -1,0 +1,189 @@
+/*
+ * Sidebar Styles
+ *
+ * All sidebar-related styles including navigation, search, and layout.
+ * Extracted from hyde.css for better separation of concerns.
+ */
+
+/*
+ * Sidebar Layout
+ *
+ * Flexible banner for housing site name, intro, and "footer" content. Starts
+ * out above content in mobile and later moves to the side with wider viewports.
+ */
+
+.sidebar {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #57702f;
+    background-color: #182c00;
+    height: 100vh;
+}
+
+.container.sidebar-sticky {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* vertically center */
+    height: 100%;
+    /* take full height of sidebar */
+}
+
+@media (min-width: 48em) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 18rem;
+        text-align: left;
+    }
+}
+
+/* Sidebar links */
+.sidebar a {
+    color: #a6e22e;
+}
+
+/* About section */
+.sidebar-about h1 {
+    color: #fff;
+    margin-top: 0;
+    font-family: "TT Norms Pro Serif";
+    font-size: 3.25rem;
+}
+
+/* Sidebar nav */
+.sidebar-nav {
+    margin-bottom: 1rem;
+}
+
+.sidebar-nav-item {
+    display: block;
+    line-height: 1.75;
+}
+
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus {
+    text-decoration: underline;
+}
+
+.sidebar-nav-item.active {
+    font-weight: bold;
+}
+
+/* Sticky sidebar
+ *
+ * Add the `sidebar-sticky` class to the sidebar's container to affix it the
+ * contents to the bottom of the sidebar in tablets and up.
+ */
+
+@media (min-width: 48em) {
+    .sidebar-sticky {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+    }
+}
+
+/*
+ * Search
+ *
+ * Search bar in the sidebar navigation.
+ */
+
+.search-container {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.search-input-group {
+    display: flex;
+    gap: 0.25rem;
+    align-items: stretch;
+    max-width: 100%;
+}
+
+.search-input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #57702f;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    flex: 1;
+    background: #182c00;
+    color: #a6e22e;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    max-width: calc(100% - 2.75rem);
+}
+
+.search-button {
+    padding: 0.5rem;
+    background: #57702f;
+    color: #a6e22e;
+    border: 1px solid #57702f;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.search-button:hover {
+    background: #a6e22e;
+    color: #182c00;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #a6e22e;
+    box-shadow: 0 0 0 2px rgba(166, 226, 46, 0.2);
+    background: #1a2e00;
+}
+
+.search-input::placeholder {
+    color: #8a9a5a;
+    font-style: italic;
+}
+
+/* Search results styling removed - using dedicated search page instead */
+
+@media (max-width: 47.9em) {
+    .search-container {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .search-input-group {
+        max-width: 300px;
+    }
+
+    .search-input {
+        flex: 1;
+    }
+
+    .search-button {
+        width: 2.5rem;
+        min-width: 2.5rem;
+    }
+}
+
+/*
+ * Reverse layout
+ *
+ * Flip the orientation of the page by placing the `.sidebar` on the right.
+ */
+
+@media (min-width: 48em) {
+    .layout-reverse .sidebar {
+        left: auto;
+        right: 0;
+    }
+}
